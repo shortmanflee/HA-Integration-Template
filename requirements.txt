@@ -5,5 +5,13 @@ debugpy==1.8.16
 pytest==8.4.1
 pytest-cov==6.2.1
 homeassistant==2025.8.3
-pytest_homeassistant_custom_component==0.13.272
+pytest-homeassistant-custom-component==0.13.272
+mypy==1.13.0
+bandit[toml]==1.7.10
+yamllint==1.35.1
 pre-commit==4.0.1
+pylint==3.3.1
+interrogate==1.7.0
+vulture==2.13
+pydocstyle==6.3.0
+commitizen==3.29.1

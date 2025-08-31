@@ -19,6 +19,7 @@ A comprehensive template repository for developing Home Assistant custom integra
 1. Click "Use this template" button on GitHub
 2. Create your new repository from this template
 3. Clone your new repository:
+
    ```bash
    git clone https://github.com/yourusername/your-integration-name.git
    cd your-integration-name
@@ -32,6 +33,7 @@ A comprehensive template repository for developing Home Assistant custom integra
 ### Customizing Your Integration
 
 1. **Rename the integration directory**:
+
    ```bash
    mv custom_components/integration_template custom_components/your_integration_name
    ```
@@ -43,6 +45,7 @@ A comprehensive template repository for developing Home Assistant custom integra
 
 3. **Update repository references**:
    Run the provided task to update all references:
+
    ```bash
    ./.vscode/dependencies/update_repo_references.sh
    ```
@@ -83,6 +86,7 @@ If you prefer local development without containers:
 #### Setup
 
 1. **Create and activate virtual environment**:
+
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # On macOS/Linux
@@ -92,6 +96,7 @@ If you prefer local development without containers:
 
 2. **Install dependencies**:
    Use the VS Code task "Install Dependencies" or run:
+
    ```bash
    pip install --upgrade pip
    pip install -r requirements.txt
@@ -99,6 +104,7 @@ If you prefer local development without containers:
 
 3. **Setup development environment**:
    Use the VS Code task "Setup Config Directory" or run:
+
    ```bash
    mkdir -p config
    ln -sf $(pwd)/custom_components config/custom_components
@@ -119,6 +125,7 @@ If you prefer local development without containers:
 ### Running Home Assistant
 
 Start Home Assistant in development mode:
+
 ```bash
 hass --config ./config --debug
 ```
@@ -128,11 +135,13 @@ Your integration will be available at `http://localhost:8080`
 ## Testing
 
 Run tests using pytest:
+
 ```bash
 python -m pytest tests/ -v
 ```
 
 The template includes:
+
 - Test configuration in `pyproject.toml`
 - Coverage reporting
 - Async test support
@@ -140,38 +149,87 @@ The template includes:
 
 ## Code Quality
 
-This template uses multiple linting tools to ensure code quality:
+This template includes comprehensive linting and code quality tools that run both locally and in CI/CD:
 
-### Python Code Quality (Ruff)
+### 🔧 Available Linters
+
+All linter configurations are stored in the `.linter/` directory:
+
+- **Ruff** (`.linter/ruff.toml`): Fast Python linter and formatter
+- **MyPy** (`.linter/mypy.ini`): Static type checking for Python
+- **Pylint** (`.linter/pylintrc`): Additional Python code analysis
+- **Bandit** (built-in): Security vulnerability scanner
+- **yamllint** (`.linter/yamllint`): YAML file linting
+- **markdownlint** (`.linter/.markdownlint.jsonc`): Markdown formatting
+- **CSpell** (`.linter/cspell.json`): Spell checking across all files
+
+### 🚀 Running Linters Locally
+
+#### Quick Commands
+
 ```bash
-# Format code
-ruff format .
+# Format and lint Python code
+source .venv/bin/activate && ruff --config .linter/ruff.toml format . && ruff --config .linter/ruff.toml check . --fix
 
-# Check and fix issues
-ruff check . --fix
-```
+# Type checking
+mypy --config-file .linter/mypy.ini custom_components/
 
-### Markdown Linting (markdownlint)
-```bash
-# Lint markdown files
-npm run lint:markdown
+# Security scan
+bandit -r custom_components/
 
-# Fix markdown issues automatically
-npm run lint:markdown:fix
-```
-
-### Combined Linting
-Use the "Lint All (Python + Markdown)" VS Code task or run:
-```bash
-# Python linting
-source .venv/bin/activate && ruff format . && ruff check . --fix
+# YAML linting
+yamllint --config-file .linter/yamllint .
 
 # Markdown linting
+npm run lint:markdown
+
+# Spell checking
+npm run spell:check
+```
+
+#### VS Code Tasks
+
+Use the Command Palette (`Ctrl+Shift+P`) and run:
+
+- **Full Lint Suite**: Runs all linters (Ruff, MyPy, Bandit, YAML, Markdown, Spell check)
+- **Enhanced Full Lint Suite**: Includes additional tools (Pylint, dead code detection, docstring checks)
+- **Lint and Fix with Ruff**: Python formatting and linting
+- **Lint Markdown**: Markdown file checking
+- **Type Check with MyPy**: Static type analysis
+- **Security Check with Bandit**: Vulnerability scanning
+
+### 🤖 GitHub Actions CI/CD
+
+All linters automatically run on every push and pull request via GitHub Actions (`.github/workflows/lint.yml`):
+
+- ✅ **Ruff** - Code formatting and linting
+- ✅ **MyPy** - Type checking
+- ✅ **Pylint** - Additional Python analysis
+- ✅ **Bandit** - Security scanning
+- ✅ **yamllint** - YAML validation
+- ✅ **markdownlint** - Markdown formatting
+- ✅ **CSpell** - Spell checking
+
+The CI runs on Python 3.13 and ensures all code meets quality standards before merging.
+
+### 📝 Configuration Notes
+
+- **Ruff**: Based on Home Assistant core configuration, includes all checks with integration-specific exclusions
+- **MyPy**: Configured for strict type checking with Home Assistant imports handled
+- **yamllint**: Configured to work with GitHub Actions workflows and excludes `node_modules/` and `.venv/`
+- **CSpell**: Includes common Home Assistant terms and technical vocabulary
+- **markdownlint**: Allows HTML and flexible line lengths for documentation
+
+## Markdown linting
+
+```bash
 npm run lint:markdown:fix
 ```
 
 ### Pre-commit Hooks
+
 Pre-commit hooks are automatically installed in the devcontainer and will run both Python and Markdown linting before each commit:
+
 ```bash
 # Manually run pre-commit on all files
 pre-commit run --all-files
@@ -179,7 +237,7 @@ pre-commit run --all-files
 
 ## Directory Structure
 
-```
+```text
 your-integration/
 ├── custom_components/
 │   └── your_integration_name/
@@ -210,6 +268,6 @@ This template is released under the MIT License. See [LICENSE](LICENSE) for deta
 - [Integration Development](https://developers.home-assistant.io/docs/creating_component_index/)
 - [HACS Documentation](https://hacs.xyz/docs/publish/start)
 
-
 ## Acknowledgements
+
 This repo has been adapted from the [Integration Blueprint](https://github.com/ludeeus/integration_blueprint) repo maintained by [ludeeus](https://github.com/ludeeus).
