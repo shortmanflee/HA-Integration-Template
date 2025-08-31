@@ -22,7 +22,7 @@ We welcome various types of contributions:
 
 The easiest and most reliable way to set up the development environment is using the included devcontainer:
 
-#### Prerequisites
+#### DevContainer Prerequisites
 
 - [VS Code](https://code.visualstudio.com/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
@@ -31,12 +31,14 @@ The easiest and most reliable way to set up the development environment is using
 #### Setup Steps
 
 1. **Fork and Clone**:
+
    ```bash
    git clone https://github.com/yourusername/your-integration-name.git
    cd your-integration-name
    ```
 
 2. **Open in VS Code**:
+
    ```bash
    code .
    ```
@@ -59,7 +61,7 @@ The easiest and most reliable way to set up the development environment is using
 
 If you prefer not to use containers:
 
-#### Prerequisites
+#### Local Development Prerequisites
 
 - Python 3.11+
 - Home Assistant development environment
@@ -68,24 +70,28 @@ If you prefer not to use containers:
 #### Setup
 
 1. **Fork and Clone**:
+
    ```bash
    git clone https://github.com/yourusername/your-integration-name.git
    cd your-integration-name
    ```
 
 2. **Create Virtual Environment**:
+
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # On macOS/Linux
    ```
 
 3. **Install Dependencies**:
+
    ```bash
    pip install --upgrade pip
    pip install -r requirements.txt
    ```
 
 4. **Setup Development Environment**:
+
    ```bash
    mkdir -p config
    ln -sf $(pwd)/custom_components config/custom_components
@@ -105,16 +111,19 @@ This project includes VS Code tasks for common development operations:
 ### Branch Strategy
 
 1. Create a feature branch from `main`:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 2. Make your changes and commit with clear messages:
+
    ```bash
    git commit -m "Add: new feature description"
    ```
 
 3. Push and create a pull request:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -149,6 +158,7 @@ python -m pytest tests/ -v --cov=custom_components
 ```
 
 **Requirements:**
+
 - All new features must include tests
 - Bug fixes should include regression tests
 - Aim for high test coverage (>80%)

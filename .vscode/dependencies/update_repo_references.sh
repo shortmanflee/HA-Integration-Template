@@ -32,20 +32,20 @@ replace_in_files() {
     local search_term="$1"
     local replace_term="$2"
     local description="$3"
-    
+
     echo "🔍 Searching for '$search_term'..."
-    
+
     # Find files containing the search term (exclude .git directory and binary files)
     local files_found=$(grep -r -l --exclude-dir=.git --exclude-dir=.venv --exclude-dir=__pycache__ "$search_term" . 2>/dev/null || true)
-    
+
     if [ -z "$files_found" ]; then
         echo "  ✅ No files found containing '$search_term'"
         return
     fi
-    
+
     echo "  📝 Files containing '$search_term':"
     echo "$files_found" | sed 's/^/    /'
-    
+
     # Ask for confirmation
     read -p "  ❓ Replace '$search_term' with '$replace_term' in these files? (y/N): " -r
     if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -70,7 +70,7 @@ replace_in_files() {
 preview_changes() {
     local search_term="$1"
     local replace_term="$2"
-    
+
     echo "🔍 Preview of changes for '$search_term' → '$replace_term':"
     grep -r -n --exclude-dir=.git --exclude-dir=.venv --exclude-dir=__pycache__ "$search_term" . 2>/dev/null | head -10 | while IFS= read -r line; do
         echo "  📄 $line"
@@ -87,17 +87,17 @@ preview_changes "$OLD_REPO_NAME" "$NEW_REPO_NAME"
 if [ "$OLD_OWNER" != "$NEW_OWNER" ] || [ "$OLD_REPO_NAME" != "$NEW_REPO_NAME" ]; then
     echo "🚀 Starting replacement process..."
     echo ""
-    
+
     # Replace owner name first
     if [ "$OLD_OWNER" != "$NEW_OWNER" ]; then
         replace_in_files "$OLD_OWNER" "$NEW_OWNER" "owner name"
     fi
-    
+
     # Replace repository name
     if [ "$OLD_REPO_NAME" != "$NEW_REPO_NAME" ]; then
         replace_in_files "$OLD_REPO_NAME" "$NEW_REPO_NAME" "repository name"
     fi
-    
+
     echo "✅ Repository reference update complete!"
 else
     echo "ℹ️  No changes needed - repository references are already correct."

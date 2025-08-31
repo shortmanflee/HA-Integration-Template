@@ -19,6 +19,7 @@ A comprehensive template repository for developing Home Assistant custom integra
 1. Click "Use this template" button on GitHub
 2. Create your new repository from this template
 3. Clone your new repository:
+
    ```bash
    git clone https://github.com/yourusername/your-integration-name.git
    cd your-integration-name
@@ -32,6 +33,7 @@ A comprehensive template repository for developing Home Assistant custom integra
 ### Customizing Your Integration
 
 1. **Rename the integration directory**:
+
    ```bash
    mv custom_components/integration_template custom_components/your_integration_name
    ```
@@ -43,6 +45,7 @@ A comprehensive template repository for developing Home Assistant custom integra
 
 3. **Update repository references**:
    Run the provided task to update all references:
+
    ```bash
    ./.vscode/dependencies/update_repo_references.sh
    ```
@@ -83,6 +86,7 @@ If you prefer local development without containers:
 #### Setup
 
 1. **Create and activate virtual environment**:
+
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # On macOS/Linux
@@ -92,6 +96,7 @@ If you prefer local development without containers:
 
 2. **Install dependencies**:
    Use the VS Code task "Install Dependencies" or run:
+
    ```bash
    pip install --upgrade pip
    pip install -r requirements.txt
@@ -99,6 +104,7 @@ If you prefer local development without containers:
 
 3. **Setup development environment**:
    Use the VS Code task "Setup Config Directory" or run:
+
    ```bash
    mkdir -p config
    ln -sf $(pwd)/custom_components config/custom_components
@@ -119,6 +125,7 @@ If you prefer local development without containers:
 ### Running Home Assistant
 
 Start Home Assistant in development mode:
+
 ```bash
 hass --config ./config --debug
 ```
@@ -128,11 +135,13 @@ Your integration will be available at `http://localhost:8080`
 ## Testing
 
 Run tests using pytest:
+
 ```bash
 python -m pytest tests/ -v
 ```
 
 The template includes:
+
 - Test configuration in `pyproject.toml`
 - Coverage reporting
 - Async test support
@@ -143,6 +152,7 @@ The template includes:
 This template uses multiple linting tools to ensure code quality:
 
 ### Python Code Quality (Ruff)
+
 ```bash
 # Format code
 ruff format .
@@ -152,6 +162,7 @@ ruff check . --fix
 ```
 
 ### Markdown Linting (markdownlint)
+
 ```bash
 # Lint markdown files
 npm run lint:markdown
@@ -161,7 +172,9 @@ npm run lint:markdown:fix
 ```
 
 ### Combined Linting
+
 Use the "Lint All (Python + Markdown)" VS Code task or run:
+
 ```bash
 # Python linting
 source .venv/bin/activate && ruff format . && ruff check . --fix
@@ -171,7 +184,9 @@ npm run lint:markdown:fix
 ```
 
 ### Pre-commit Hooks
+
 Pre-commit hooks are automatically installed in the devcontainer and will run both Python and Markdown linting before each commit:
+
 ```bash
 # Manually run pre-commit on all files
 pre-commit run --all-files
@@ -179,7 +194,7 @@ pre-commit run --all-files
 
 ## Directory Structure
 
-```
+```text
 your-integration/
 ├── custom_components/
 │   └── your_integration_name/
@@ -210,6 +225,6 @@ This template is released under the MIT License. See [LICENSE](LICENSE) for deta
 - [Integration Development](https://developers.home-assistant.io/docs/creating_component_index/)
 - [HACS Documentation](https://hacs.xyz/docs/publish/start)
 
-
 ## Acknowledgements
+
 This repo has been adapted from the [Integration Blueprint](https://github.com/ludeeus/integration_blueprint) repo maintained by [ludeeus](https://github.com/ludeeus).

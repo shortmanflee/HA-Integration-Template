@@ -1,1 +1,1 @@
-"""A template integration"""
+"""A template integration."""
