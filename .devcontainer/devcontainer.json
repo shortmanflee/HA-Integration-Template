@@ -1,11 +1,7 @@
 {
     "name": "shortmanflee/ha_integration_template",
     "image": "mcr.microsoft.com/devcontainers/python:3.13",
-    "postCreateCommand": [
-        "bash",
-        "-c",
-        "python -m venv .venv && ./.venv/bin/python -m pip install --upgrade pip && ./.venv/bin/pip install -r requirements.txt && npm install && ./.venv/bin/pre-commit install && mkdir -p config && rm -f config/custom_components && ln -sf $(pwd)/custom_components config/custom_components"
-    ],
+    "postCreateCommand": "bash .devcontainer/setup.sh",
     "postStartCommand": [
         "bash",
         "-c",
