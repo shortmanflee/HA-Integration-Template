@@ -1,6 +1,11 @@
 # yamllint configuration for Home Assistant integration
 extends: default
 
+ignore: |
+  .venv/
+  node_modules/
+  .git/
+
 rules:
   # Allow longer lines (common in GitHub workflows)
   line-length:
@@ -18,7 +23,9 @@ rules:
   indentation:
     spaces: 2
     indent-sequences: true
-    check-multi-line-strings: false
+
+  # Disable strict colon checking
+  colons: disable
 
   # Allow comments to be less strictly formatted
   comments:

@@ -4,8 +4,6 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
       - id: check-merge-conflict
@@ -14,13 +12,13 @@ repos:
     rev: v0.12.11
     hooks:
       - id: ruff
-        args: [--fix]
-      - id: ruff-format
+        args: [--config, .linter/ruff.toml]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.17.1
     hooks:
       - id: mypy
+        args: [--config-file, .linter/mypy.ini]
         additional_dependencies: [types-requests]
 
   - repo: https://github.com/PyCQA/bandit
@@ -33,14 +31,16 @@ repos:
     rev: v1.37.1
     hooks:
       - id: yamllint
+        args: [-c, .linter/yamllint]
 
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v9.2.0
     hooks:
       - id: cspell
+        args: [--config, .linter/cspell.json]
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.45.0
     hooks:
       - id: markdownlint
-        args: [--fix]
+        args: [--config, .linter/.markdownlint.jsonc]

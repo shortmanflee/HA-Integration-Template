@@ -8,9 +8,9 @@
     "cspell": "^8.14.2"
   },
   "scripts": {
-    "lint:markdown": "markdownlint-cli2 '**/*.md'",
-    "lint:markdown:fix": "markdownlint-cli2 --fix '**/*.md'",
-    "spell:check": "cspell '**/*.{py,md,yaml,yml,json,js,ts}' --no-progress",
-    "spell:check:fix": "cspell '**/*.{py,md,yaml,yml,json,js,ts}' --no-progress --show-suggestions"
+    "lint:markdown": "markdownlint-cli2 --config .linter/.markdownlint.jsonc '**/*.md' '!node_modules/**' '!.venv/**'",
+    "lint:markdown:fix": "markdownlint-cli2 --config .linter/.markdownlint.jsonc --fix '**/*.md' '!node_modules/**' '!.venv/**'",
+    "spell:check": "cspell --config .linter/cspell.json '**/*.{py,md,yaml,yml,json,js,ts}' '.linter/*.toml' 'pyproject.toml' --no-progress",
+    "spell:check:fix": "cspell --config .linter/cspell.json '**/*.{py,md,yaml,yml,json,js,ts}' '.linter/*.toml' 'pyproject.toml' --no-progress --show-suggestions"
   }
 }
