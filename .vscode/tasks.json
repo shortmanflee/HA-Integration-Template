@@ -95,6 +95,81 @@
                 "panel": "shared"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Lint Markdown",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "lint:markdown"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": {
+                "owner": "markdownlint",
+                "fileLocation": "relative",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+)\\s+(MD\\d+\\/[^\\s]+)\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "code": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "Fix Markdown",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "lint:markdown:fix"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint All (Python + Markdown)",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "source ${workspaceFolder}/.venv/bin/activate && echo 'Running Python linting...' && ruff format . && ruff check . --fix && echo 'Running Markdown linting...' && npm run lint:markdown:fix"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [
+                {
+                    "owner": "markdownlint",
+                    "fileLocation": "relative",
+                    "pattern": {
+                        "regexp": "^(.*):(\\d+):(\\d+)\\s+(MD\\d+\\/[^\\s]+)\\s+(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "code": 4,
+                        "message": 5
+                    }
+                }
+            ]
         }
     ]
 }

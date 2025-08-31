@@ -110,7 +110,10 @@ If you prefer local development without containers:
 - **Start Home Assistant (Development)**: Launch HA with your integration in debug mode
 - **Setup Config Directory**: Configure the development environment
 - **Run Tests**: Execute the test suite with pytest
-- **Lint and Fix with Ruff**: Format and lint your code
+- **Lint and Fix with Ruff**: Format and lint your Python code
+- **Lint Markdown**: Check markdown files for formatting issues
+- **Fix Markdown**: Automatically fix markdown formatting issues
+- **Lint All (Python + Markdown)**: Run both Python and Markdown linting
 - **Update Repository References**: Update template references to your integration
 
 ### Running Home Assistant
@@ -137,14 +140,41 @@ The template includes:
 
 ## Code Quality
 
-This template uses Ruff for code formatting and linting:
+This template uses multiple linting tools to ensure code quality:
 
+### Python Code Quality (Ruff)
 ```bash
 # Format code
 ruff format .
 
 # Check and fix issues
 ruff check . --fix
+```
+
+### Markdown Linting (markdownlint)
+```bash
+# Lint markdown files
+npm run lint:markdown
+
+# Fix markdown issues automatically
+npm run lint:markdown:fix
+```
+
+### Combined Linting
+Use the "Lint All (Python + Markdown)" VS Code task or run:
+```bash
+# Python linting
+source .venv/bin/activate && ruff format . && ruff check . --fix
+
+# Markdown linting
+npm run lint:markdown:fix
+```
+
+### Pre-commit Hooks
+Pre-commit hooks are automatically installed in the devcontainer and will run both Python and Markdown linting before each commit:
+```bash
+# Manually run pre-commit on all files
+pre-commit run --all-files
 ```
 
 ## Directory Structure

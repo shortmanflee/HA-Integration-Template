@@ -8,6 +8,10 @@ __pycache__
 # Virtual environment
 .venv/
 
+# Node.js
+node_modules/
+package-lock.json
+
 # misc
 .coverage
 coverage.xml

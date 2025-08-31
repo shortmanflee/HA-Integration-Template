@@ -4,7 +4,7 @@
     "postCreateCommand": [
         "bash",
         "-c",
-        "python -m venv .venv && ./.venv/bin/python -m pip install --upgrade pip && ./.venv/bin/pip install -r requirements.txt && mkdir -p config && rm -f config/custom_components && ln -sf $(pwd)/custom_components config/custom_components"
+        "python -m venv .venv && ./.venv/bin/python -m pip install --upgrade pip && ./.venv/bin/pip install -r requirements.txt && npm install && ./.venv/bin/pre-commit install && mkdir -p config && rm -f config/custom_components && ln -sf $(pwd)/custom_components config/custom_components"
     ],
     "postStartCommand": [
         "bash",
@@ -33,7 +33,8 @@
                 "GitHub.copilot",
                 "GitHub.copilot-chat",
                 "GitHub.remotehub",
-                "GitHub.vscode-pull-request-github"
+                "GitHub.vscode-pull-request-github",
+                "DavidAnson.vscode-markdownlint"
             ],
             "settings": {
                 "files.eol": "\n",
@@ -54,6 +55,14 @@
                 },
                 "[json]": {
                     "editor.defaultFormatter": "vscode.json-language-features"
+                },
+                "[markdown]": {
+                    "editor.formatOnSave": true
+                },
+                "markdownlint.config": {
+                    "MD013": false,
+                    "MD033": false,
+                    "MD041": false
                 }
             }
         }

@@ -32,3 +32,21 @@ jobs:
 
       - name: Format
         run: python3 -m ruff format . --check
+
+  markdownlint:
+    name: "Markdown Lint"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@61389a0a35cfb8cf0b80e55b01c4e6a9e11b4c43 # v4.0.4
+        with:
+          node-version: "lts/*"
+
+      - name: Install markdownlint-cli2
+        run: npm install
+
+      - name: Lint Markdown files
+        run: npm run lint:markdown

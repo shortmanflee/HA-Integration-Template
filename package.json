@@ -1,0 +1,13 @@
+{
+  "name": "ha-integration-template",
+  "version": "1.0.0",
+  "description": "Home Assistant Integration Template",
+  "private": true,
+  "devDependencies": {
+    "markdownlint-cli2": "^0.14.0"
+  },
+  "scripts": {
+    "lint:markdown": "markdownlint-cli2 '**/*.md'",
+    "lint:markdown:fix": "markdownlint-cli2 --fix '**/*.md'"
+  }
+}
