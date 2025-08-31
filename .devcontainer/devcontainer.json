@@ -30,7 +30,8 @@
                 "GitHub.copilot-chat",
                 "GitHub.remotehub",
                 "GitHub.vscode-pull-request-github",
-                "DavidAnson.vscode-markdownlint"
+                "DavidAnson.vscode-markdownlint",
+                "streetsidesoftware.code-spell-checker"
             ],
             "settings": {
                 "files.eol": "\n",
@@ -59,7 +60,10 @@
                     "MD013": false,
                     "MD033": false,
                     "MD041": false
-                }
+                },
+                "cSpell.enabled": true,
+                "cSpell.showStatus": true,
+                "cSpell.diagnosticLevel": "Warning"
             }
         }
     },

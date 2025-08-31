@@ -4,10 +4,13 @@
   "description": "Home Assistant Integration Template",
   "private": true,
   "devDependencies": {
-    "markdownlint-cli2": "^0.14.0"
+    "markdownlint-cli2": "^0.14.0",
+    "cspell": "^8.14.2"
   },
   "scripts": {
     "lint:markdown": "markdownlint-cli2 '**/*.md'",
-    "lint:markdown:fix": "markdownlint-cli2 --fix '**/*.md'"
+    "lint:markdown:fix": "markdownlint-cli2 --fix '**/*.md'",
+    "spell:check": "cspell '**/*.{py,md,yaml,yml,json,js,ts}' --no-progress",
+    "spell:check:fix": "cspell '**/*.{py,md,yaml,yml,json,js,ts}' --no-progress --show-suggestions"
   }
 }
