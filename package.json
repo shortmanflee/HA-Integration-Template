@@ -11,6 +11,7 @@
     "lint:markdown": "markdownlint-cli2 --config .linter/.markdownlint.jsonc '**/*.md' '!node_modules/**' '!.venv/**'",
     "lint:markdown:fix": "markdownlint-cli2 --config .linter/.markdownlint.jsonc --fix '**/*.md' '!node_modules/**' '!.venv/**'",
     "spell:check": "cspell --config .linter/cspell.json '**/*.{py,md,yaml,yml,json,js,ts}' '.linter/*.toml' 'pyproject.toml' --no-progress",
-    "spell:check:fix": "cspell --config .linter/cspell.json '**/*.{py,md,yaml,yml,json,js,ts}' '.linter/*.toml' 'pyproject.toml' --no-progress --show-suggestions"
+    "spell:check:fix": "cspell --config .linter/cspell.json '**/*.{py,md,yaml,yml,json,js,ts}' '.linter/*.toml' 'pyproject.toml' --no-progress --show-suggestions",
+    "precommit:fix": "pre-commit run --all-files"
   }
 }

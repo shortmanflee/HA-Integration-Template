@@ -1,6 +1,6 @@
 {
     "version": "0.2",
-    "language": "en",
+    "language": "en-GB",
     "words": [
         "addopts",
         "aiohttp",
@@ -10,6 +10,7 @@
         "bandit",
         "charliermarsh",
         "colorlog",
+        "color",
         "commitizen",
         "cspell",
         "debugpy",
@@ -33,6 +34,8 @@
         "json",
         "libpcap",
         "libturbojpeg",
+        "Linters",
+        "linters",
         "ludeeus",
         "markdownlint",
         "mccabe",

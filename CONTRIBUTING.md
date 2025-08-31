@@ -130,7 +130,7 @@ This project includes VS Code tasks for common development operations:
 
 ### Code Standards
 
-We use **Ruff** for code formatting and linting:
+We use **Ruff** for code formatting and linting, along with other quality tools via pre-commit hooks:
 
 ```bash
 # Format code
@@ -142,6 +142,46 @@ ruff check .
 # Auto-fix issues where possible
 ruff check . --fix
 ```
+
+#### Pre-commit Workflow
+
+This project uses pre-commit hooks to automatically fix common code quality issues:
+
+**How it Works:**
+
+1. **Make your changes** and stage them with `git add`
+2. **Attempt to commit** with `git commit -m "your message"`
+3. **If auto-fixes are applied:**
+   - The commit will be blocked
+   - Review changes with `git diff`
+   - Stage approved changes with `git add .` or selectively
+   - Commit again with `git commit -m "your message"`
+
+**Manual Fix Commands:**
+
+```bash
+# Fix all issues at once
+npm run precommit:fix
+
+# Fix specific types of issues
+npm run lint:markdown:fix
+source .venv/bin/activate && ruff --config .linter/ruff.toml format . && ruff --config .linter/ruff.toml check . --fix
+```
+
+**What Gets Auto-Fixed:**
+
+- ✅ **Python**: Code formatting, import sorting, basic linting issues (Ruff)
+- ✅ **Markdown**: Formatting, style consistency (markdownlint)
+- ✅ **YAML**: Formatting, indentation (Prettier)
+- ✅ **General**: Trailing whitespace, missing final newlines
+- ❌ **Manual Review Required**: Type errors, security issues, spelling mistakes
+
+**Important Notes:**
+
+- **Always review auto-fixes** before committing
+- **Auto-fixes are not automatically staged** - you must review and stage them
+- **Some issues require manual intervention** (type errors, security, spelling)
+- **Use `git diff` to see what was changed** by the auto-fixes
 
 **Code must pass all linting checks before being merged.**
 
@@ -211,7 +251,7 @@ When reporting bugs, please include:
   2. Include configuration examples
   3. Provide sample code if relevant
 
-- **Expected vs Actual Behavior**:
+- **Expected vs Actual Behaviour**:
   - What should have happened?
   - What actually happened?
 
@@ -238,7 +278,7 @@ When reporting bugs, please include:
 - Help others learn and grow
 - Assume good intentions
 
-### Unacceptable Behavior
+### Unacceptable Behaviour
 
 - Harassment or discriminatory language
 - Personal attacks or trolling
